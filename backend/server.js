@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import UserModel from "./backend/models/userModel";
+import UserModel from "./models/userModel";
 
 
 const app = express();
