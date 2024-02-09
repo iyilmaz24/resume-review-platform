@@ -38,8 +38,11 @@ function App() {
 
         <FormInput defaultText="Your Instagram" eHandler={setInstagramAt}/>
 
-        <h4>{discordAt}</h4>
-        <h4>{instagramAt}</h4>
+        {/* <h4>{discordAt}</h4>
+        <h4>{instagramAt}</h4> */}
+
+        <input type="text" value={discordAt}/>
+        <input type="text" value={instagramAt}/>
 
         <label id="file-button" htmlFor="file-upload" className="custom-file-upload">
           {fileBtnText}
@@ -49,7 +52,7 @@ function App() {
               onChange={(e) => uploadFileName(e, setFileName, setFileBtnText)}/>
 
         <h4>{fileName}</h4>
-
+        
       <button type='submit'>Submit</button>
     </form>
 
