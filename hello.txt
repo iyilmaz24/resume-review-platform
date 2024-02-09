@@ -1,1 +1,0 @@
-This React template repository is created with Vite, ESLint and Prettier
