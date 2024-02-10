@@ -1,7 +1,7 @@
-import { Schema as _Schema, model } from "mongoose";
+const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
 
-const Schema = _Schema;
 
 const userData = new Schema({
     instagram: {type: String, 
@@ -25,7 +25,7 @@ const userData = new Schema({
     date: () => Date.now(),
 })
 
-const UserModel = model("item", userData);
+const UserModel = mongoose.model("item", userData);
 
 
-export default UserModel;
+module.exports = UserModel;

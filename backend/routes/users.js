@@ -1,23 +1,18 @@
-import express from "express";
-import mongoose from "mongoose";
-import UserModel from "./models/userModel";
+const express = require('express');
+const router = express.Router();
+const UserModel = require("../models/userModel");
 
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-mongoose.connect("mongodb://localhost/your_database_name", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
 });
 
 
 const UserRecord = UserModel;
 
 // make a new submission
-app.post("/submission", async (req, res) => {
+router.post("/submission", async (req, res) => {
   try {
     let newUser = new UserRecord({
         instagram: req.igAt,
@@ -36,7 +31,7 @@ app.post("/submission", async (req, res) => {
 
 
 // display all currently uploaded submissions
-app.get("/records", async (req, res) => {
+router.get("/records", async (req, res) => {
   try {
     const items = await UserRecord.find();
     res.json(items);
@@ -46,3 +41,8 @@ app.get("/records", async (req, res) => {
   }
   console.log(JSON.stringify(res));
 });
+
+
+
+
+module.exports = router;
