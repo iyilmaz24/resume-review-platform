@@ -39,7 +39,13 @@
   color: rgb(24, 99, 229);
 }
 
-#formButton {
+#formSubmitBtn {
   background-color: #1863E5;
   color: white;
+}
+#formHomeBtn {
+  /* background-color: #1863E5;
+  color: white; */
+  color: #1863E5;;
+  font-size: small;
 }

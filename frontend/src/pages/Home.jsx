@@ -21,11 +21,11 @@ function Home() {
 
         <h1 className="title-style">Welcome to ResuShare.io</h1>
         
-        <h2 className="text-center">
+        <div className="place-self-center text-center max-w-72">
             Seamlessly upload your professional credentials, 
             and let our platform do the rest. Our user-friendly interface 
             ensures a hassle-free experience, no strings attached.
-        </h2>
+        </div>
 
         <div className="flex flex-col p-4 space-y-4 place-items-center">
             <button onClick={() => setToForm(true)} className="defaultButton">Submit a Resume</button>

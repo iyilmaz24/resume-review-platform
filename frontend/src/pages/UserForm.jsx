@@ -2,8 +2,9 @@ import { useState } from 'react';
 import uploadFileName from '../scripts/fileName';
 import FormInput from '../components/formInput';
 import { Button } from '@mantine/core';
-import { IconSend2 } from '@tabler/icons-react';
+import { IconSend2, IconHomeHeart } from '@tabler/icons-react';
 import { Navigate } from "react-router-dom";
+
 
 
 function UserForm() {
@@ -21,6 +22,7 @@ function UserForm() {
   if (toHome === true) {
     return <Navigate to="/" />;
   };
+
 
   async function handleSubmit() {
       if(discordAt == "" || instagramAt == "") {
@@ -81,16 +83,22 @@ function UserForm() {
 
         <h4 id='fileNameDisplay'>{fileName}</h4>
       
-      <div className='p-16'>
+      <div className="flex flex-col p-4 space-y-20 place-items-center">
+
         {isUploading === true ?
-          <Button id='formButton'
+          <Button id='formSubmitBtn'
               onClick={handleSubmit} loading>
               Submitting Info
           </Button> :
-          <Button id='formButton'
+          <Button id='formSubmitBtn'
               onClick={handleSubmit} >
               Submit Info&nbsp;<IconSend2 size={18}/>
           </Button> }
+
+          <Button onClick={() => setToHome(true)} size='compact-md' variant='light'>
+            Home&nbsp;<IconHomeHeart size={18}/>
+          </Button>
+
       </div>
 
     </form>

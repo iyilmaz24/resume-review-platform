@@ -1,11 +1,14 @@
 import './App.css'
-import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import UserForm from './pages/UserForm';
 import Home from './pages/Home';
 import Review from './pages/Review';
+import Records from './pages/Records';
+
+import '@mantine/core/styles.css';
+import '@mantine/core/styles/UnstyledButton.css';
+import '@mantine/core/styles/Button.css';
 
 
 const router = createBrowserRouter([
@@ -20,7 +23,11 @@ const router = createBrowserRouter([
   {
     path: "/review",
     element: <Review />
-  }
+  },
+  {
+    path: "/records",
+    element: <Records />
+  },
 ]);
 
 

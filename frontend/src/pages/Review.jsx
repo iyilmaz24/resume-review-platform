@@ -1,10 +1,19 @@
 import { Navigate } from "react-router-dom";
 import { useState } from 'react';
+import { Button } from '@mantine/core';
+import { IconHomeHeart } from '@tabler/icons-react';
 
+import '@mantine/core/styles/UnstyledButton.css';
+import '@mantine/core/styles/Button.css';
 
 function Review() {
 
     const [toHome, setToHome] = useState(false);
+    const [toRecord, setToRecords] = useState(false);
+
+    if (toRecord === true) {
+      return <Navigate to="/records" />;
+    };
     if (toHome === true) {
       return <Navigate to="/" />;
     };
@@ -22,8 +31,13 @@ function Review() {
             <button className="defaultButton">Spin</button>
         </div>
 
-        <div className="flex flex-col p-4 space-y-4 place-items-center">
-            <button onClick={() => setToHome(true)} className="defaultButton">Home Page</button>
+        <div className="flex flex-row p-4 space-x-4 place-items-center">
+            <Button onClick={() => setToHome(true)} size='compact-md' variant='light'>
+                Home&nbsp;<IconHomeHeart size={18}/>
+            </Button>
+            <Button onClick={() => setToRecords(true)} size='compact-md' variant='light'>
+                All Entries
+            </Button>
         </div>
 
     </div>
