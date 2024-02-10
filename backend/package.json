@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www",
-    "serverstart": "DEBUG=library-express-app:* npm run devstart"
+    "start": "PORT=3001 node ./bin/www",
+    "devstart": "PORT=3001 nodemon ./bin/www",
+    "serverstart": "PORT=3001 DEBUG=library-express-app:* npm run devstart"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",

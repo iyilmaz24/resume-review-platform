@@ -5,7 +5,8 @@ const UserModel = require("../models/userModel");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send('Hello World');
+  console.log("Hello World");
 });
 
 
