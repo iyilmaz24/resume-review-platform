@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import uploadFileName from '../scripts/fileName';
 import FormInput from '../components/formInput';
-import { Button } from '@mantine/core';
+import { Button, Select } from '@mantine/core';
 import { IconSend2, IconHomeHeart } from '@tabler/icons-react';
 import { Navigate } from "react-router-dom";
 
@@ -16,6 +16,8 @@ function UserForm() {
   const [fileBtnText, setFileBtnText] = useState("Upload Resume");
   const [isUploading, setIsUploading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  const [reqType, setReqType] = useState("");
 
   const [pageTitle, setPageTitle] = useState("Upload a Resume");
   const [toHome, setToHome] = useState(false);
@@ -68,11 +70,13 @@ function UserForm() {
 
         <FormInput defaultText="Instagram" eHandler={setInstagramAt} eMsg={errorMsg}/>
 
-        {/* <h4>{discordAt}</h4>
-        <h4>{instagramAt}</h4> */}
-
-        {/* <input type="text" value={discordAt}/>
-        <input type="text" value={instagramAt}/> */}
+        <Select
+          placeholder="Purpose"
+          // make a HTTP get request and populate 'data' below with the possible resume collections 
+          data={[{ group: 'Education', items: ['Discord Live Stream'] },
+                 { group: 'Paid Private', items: [ {value: 'Vinny', label: 'Vinny', disabled: true}, ]} ]}
+          onChange={(_value) => setReqType(_value)}
+        />
 
         <label id="file-button" htmlFor="file-upload" className="custom-file-upload">
           {fileBtnText}
