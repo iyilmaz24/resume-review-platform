@@ -9,6 +9,11 @@
   display: none;
 }
 
+.defaultButton {
+  background-color: rgb(24, 99, 229);
+  color: #FFFFFF;
+}
+
 .custom-file-upload {
   border: 1px solid #ccc;
   display: inline-block;
@@ -31,9 +36,10 @@
   text-size-adjust: 100%;
   font-feature-settings: "kern";
   font-size: 36px;
-}
-
-#upload-page-title {
   color: rgb(24, 99, 229);
 }
 
+#formButton {
+  background-color: #1863E5;
+  color: white;
+}
