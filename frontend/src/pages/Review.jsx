@@ -1,15 +1,20 @@
 import { Navigate } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button } from '@mantine/core';
 import { IconHomeHeart } from '@tabler/icons-react';
+import ResumeWheel from "../components/resumeWheel";
 
 import '@mantine/core/styles/UnstyledButton.css';
 import '@mantine/core/styles/Button.css';
+
+
 
 function Review() {
 
     const [toHome, setToHome] = useState(false);
     const [toRecord, setToRecords] = useState(false);
+
+    const spinDeg = useRef(Math.ceil(Math.random() * 3000));
 
     if (toRecord === true) {
       return <Navigate to="/records" />;
@@ -17,7 +22,7 @@ function Review() {
     if (toHome === true) {
       return <Navigate to="/" />;
     };
-
+    
 
     return(<>
 
@@ -26,9 +31,7 @@ function Review() {
         <h1 className="title-style">Resume Wheel</h1>
 
         <div>
-            Resume Wheel
-
-            <button className="defaultButton">Spin</button>
+            <ResumeWheel spinDeg={spinDeg}/>
         </div>
 
         <div className="flex flex-row p-4 space-x-4 place-items-center">
