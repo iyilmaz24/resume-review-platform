@@ -16,8 +16,8 @@ function ResumeWheel({ spinDeg }) {
   return (<>
 
         <div className="arrow flex flex-row place-content-center">
-            <IconArrowDownBar size={48}/></div>
-            
+            <IconArrowDownBar size={60}/></div>
+
         <div className="container">
             <div className="one">1</div>
             <div className="two">2</div>
@@ -29,7 +29,10 @@ function ResumeWheel({ spinDeg }) {
             <div className="eight">8</div>
         </div>
 
-        <button onClick={spinWheel} id="spin" className="defaultButton">Spin</button>
+        <div className='mt-8'>
+            <button onClick={spinWheel} id="spin" className="defaultButton">Spin</button>
+        </div>
+
 
   </>);
 }

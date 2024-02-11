@@ -26,7 +26,7 @@ function Review() {
 
     return(<>
 
-    <div className="flex flex-col place-content-evenly space-y-4 p-4 min-h-screen min-w-screen">
+    <div className="flex flex-col place-content-evenly gap-12 max-h-screen max-w-screen">
 
         <h1 className="title-style">Resume Wheel</h1>
 
