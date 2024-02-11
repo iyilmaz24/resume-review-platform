@@ -57,38 +57,35 @@ function UserForm() {
 
   return ( <>
       
-    <h1 className="title-style">{pageTitle}</h1>
+    <div className="title-style">{pageTitle}</div>
 
     {/* <input type='file' className='hideItem'></input> */}
     {/* <input type='file'></input>
     <FileDrop fileRef={fileRef}/> */}
 
     <form className='min-w-screen min-h-fit 
-    flex-row place-items-evenly space-y-4 p-4'>
+    flex-row place-items-evenly space-y-4 m-8'>
       
         <FormInput defaultText="Discord" eHandler={setDiscordAt} eMsg={errorMsg}/>
-
         <FormInput defaultText="Instagram" eHandler={setInstagramAt} eMsg={errorMsg}/>
 
-        <Select
-          placeholder="Purpose"
+        <Select placeholder="Purpose"
           // make a HTTP get request and populate 'data' below with the possible resume collections 
           data={[{ group: 'Education', items: ['Discord Live Stream'] },
                  { group: 'Paid Private', items: [ {value: 'Vinny', label: 'Vinny', disabled: true}, ]} ]}
-          onChange={(_value) => setReqType(_value)}
-        />
+          onChange={(_value) => setReqType(_value)} />
+
 
         <label id="file-button" htmlFor="file-upload" className="custom-file-upload">
           {fileBtnText}
         </label>
-
         <input id="file-upload" type="file" className='hideItem'
               onChange={(e) => uploadFileName(e, setFileName, setFileBtnText)}/>
 
         <h4 id='fileNameDisplay'>{fileName}</h4>
-      
-      <div className="flex flex-col p-4 space-y-20 place-items-center">
+  
 
+      <div className="flex flex-col p-4 space-y-20 place-items-center">
         {isUploading === true ?
           <Button id='formSubmitBtn'
               onClick={handleSubmit} loading>
@@ -102,9 +99,7 @@ function UserForm() {
           <Button onClick={() => setToHome(true)} size='compact-md' variant='light'>
             Home&nbsp;<IconHomeHeart size={18}/>
           </Button>
-
       </div>
-
     </form>
 
     </> )
