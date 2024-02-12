@@ -14,20 +14,40 @@ const UserRecord = UserModel;
 
 // make a new submission
 router.post("/submission", async (req, res) => {
-  try {
-    let newUser = new UserRecord({
-        instagram: req.igAt,
-        discord: req.discAt,
-        file_name: req.fileN, })
 
-    await newUser.save();
-    console.log(`${req.fileN} was saved.`)
-    res.redirect("/success-page");
-  } 
-  catch (err) {
-      console.log(err)
-      res.redirect("/submission-error");
-  }
+  const postData = req.body;
+  const postFile = req.files[0];
+    // postFile is a JSON object{
+      //   fieldname: 'file',
+      //   originalname: 'blob',
+      //   encoding: '7bit',
+      //   mimetype: 'application/pdf',
+      //   buffer: <Buffer 25 50 44 46 2d 31 2e 34 0a 25 d3 eb e9 e 0a 31 ... 767329 more bytes>,
+      //   size: 7673791
+      // }
+    // console.log(postFile);
+
+    
+  // res.setHeader('Content-Type', 'application/json');
+  res.send(`instagram: ${postData.collection} ${postData.fileName}`);
+
+  // try {
+    // let newUser = new UserRecord({
+    //     instagram: postData.instagram,
+    //     discord: postData.discord,
+    //     file_name: postData.fileName, 
+    //     collection: postData.collection,
+    //     file: postFile,
+    //   })
+
+  //   await newUser.save();
+  //   console.log(`${req.fileN} was saved.`)
+  //   res.redirect("/success-page");
+  // } 
+  // catch (err) {
+  //     console.log(err)
+  //     res.redirect("/submission-error");
+  // }
 });
 
 

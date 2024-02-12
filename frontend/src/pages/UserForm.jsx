@@ -47,27 +47,35 @@ function UserForm() {
       setIsUploading(true);
       setPageTitle("Resume Submitted!");
 
-      console.log(userFile);
-      // discordAt, instagramAt, fileName, reqType, {the file itself}
-      fetch("http://localhost:3001/users", {
-        Method: 'POST',
-        Headers: {
-          Accept: 'application.json',
-          'Content-Type': 'application/json'
-        },
-        Body: JSON.stringify({
-          instagram:instagramAt,
-          discord:discordAt,
-          fileName:fileName,
-          collection:reqType,
-          file: userFile,
-        }),
-        Cache: 'default'
-      })
-      .then(res => console.log(res.json()));
+      const formData = new FormData();
+      formData.append("instagram", instagramAt);
+      formData.append("discord", discordAt);
+      formData.append("fileName", fileName);
+      formData.append("collection", reqType);
 
+      const pdfBlob = new Blob([userFile], { type: "application/pdf" });
+      formData.append("file", pdfBlob);
+
+      fetch("http://localhost:3001/users/submission", {
+        method: 'POST',
+        // headers: {
+          // accept: 'application.json',
+          // 'Content-Type': 'multipart/form-data'
+        // },
+        // body: {
+        //   instagram:instagramAt,
+        //   discord:discordAt,
+        //   fileName:fileName,
+        //   collection:reqType,
+        //   file: userFile,
+        // },
+        body: formData,
+        // cache: 'default'
+      }).then(res => console.log(res.text()))
+      // .then(res => console.log(res.json()))
         // .then(res => res.json())
-        // .then(res => console.log(JSON.stringify(res)));
+        // .then(res => console.log("res:", res.sentType));
+        // .then(res => console.log((JSON.stringify(res))));
       
       // if request fails setPageTitle to retry submit and allow re-submission of form
       // setPageTitle("Retry Submission")
