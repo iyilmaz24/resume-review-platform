@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import uploadFileName from '../scripts/fileName';
+import uploadFileName from '../scripts/fileUpload';
 import FormInput from '../components/formInput';
 import { Button, Select } from '@mantine/core';
 import { IconSend2, IconHomeHeart } from '@tabler/icons-react';
@@ -18,6 +18,7 @@ function UserForm() {
   const [errorMsg, setErrorMsg] = useState("");
 
   const [reqType, setReqType] = useState("");
+  const [userFile, setUserFile] = useState();
 
   const [pageTitle, setPageTitle] = useState("Upload a Resume");
   const [toHome, setToHome] = useState(false);
@@ -31,21 +32,40 @@ function UserForm() {
         setErrorMsg( (discordAt == "" ? "Discord" : 
         "Instagram") );
         return;
-      };
-      setErrorMsg("");
+      } setErrorMsg("");
 
-      if(fileName == "No File Selected.") {
-        document.getElementById("fileNameDisplay").style.color = "red";
+      if(reqType == "" || reqType == "empty"){
+        setReqType("empty");
         return;
       }
-      document.getElementById("fileNameDisplay").style.color = "";
 
+      if(fileName == "No File Selected." || fileName == "File Must Be PDF!") {
+        document.getElementById("fileNameDisplay").style.color = "red";
+        return;
+      } document.getElementById("fileNameDisplay").style.color = "";
       
       setIsUploading(true);
-      setPageTitle("Thanks!");
+      setPageTitle("Resume Submitted!");
 
-      fetch("http://localhost:3001/users")
+      console.log(userFile);
+      // discordAt, instagramAt, fileName, reqType, {the file itself}
+      fetch("http://localhost:3001/users", {
+        Method: 'POST',
+        Headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json'
+        },
+        Body: JSON.stringify({
+          instagram:instagramAt,
+          discord:discordAt,
+          fileName:fileName,
+          collection:reqType,
+          file: userFile,
+        }),
+        Cache: 'default'
+      })
       .then(res => console.log(res.json()));
+
         // .then(res => res.json())
         // .then(res => console.log(JSON.stringify(res)));
       
@@ -69,18 +89,22 @@ function UserForm() {
         <FormInput defaultText="Discord" eHandler={setDiscordAt} eMsg={errorMsg}/>
         <FormInput defaultText="Instagram" eHandler={setInstagramAt} eMsg={errorMsg}/>
 
+        {reqType == "empty" ?
         <Select placeholder="Purpose"
-          // make a HTTP get request and populate 'data' below with the possible resume collections 
           data={[{ group: 'Education', items: ['Discord Live Stream'] },
                  { group: 'Paid Private', items: [ {value: 'Vinny', label: 'Vinny', disabled: true}, ]} ]}
-          onChange={(_value) => setReqType(_value)} />
-
+          onChange={(_value) => setReqType(_value)} allowDeselect={false} error/> :
+          <Select placeholder="Purpose"
+          data={[{ group: 'Education', items: ['Discord Live Stream'] },
+                 { group: 'Paid Private', items: [ {value: 'Vinny', label: 'Vinny', disabled: true}, ]} ]}
+          onChange={(_value) => setReqType(_value)} allowDeselect={false}/>
+        }
 
         <label id="file-button" htmlFor="file-upload" className="custom-file-upload">
           {fileBtnText}
         </label>
         <input id="file-upload" type="file" className='hideItem'
-              onChange={(e) => uploadFileName(e, setFileName, setFileBtnText)}/>
+              onChange={(e) => uploadFileName(e, setFileName, setFileBtnText, setUserFile)}/>
 
         <h4 id='fileNameDisplay'>{fileName}</h4>
   
