@@ -51,7 +51,7 @@ function UserForm() {
       formData.append("instagram", instagramAt);
       formData.append("discord", discordAt);
       formData.append("fileName", fileName);
-      formData.append("collection", reqType);
+      formData.append("group", reqType);
 
       const pdfBlob = new Blob([userFile], { type: "application/pdf" });
       formData.append("file", pdfBlob);

@@ -17,6 +17,8 @@ router.post("/submission", async (req, res) => {
 
   const postData = req.body;
   const postFile = req.files[0];
+  const postFileBuffer = req.files[0].buffer;
+  console.log(postFileBuffer);
     // postFile is a JSON object{
       //   fieldname: 'file',
       //   originalname: 'blob',
@@ -35,8 +37,9 @@ router.post("/submission", async (req, res) => {
         instagram: postData.instagram,
         discord: postData.discord,
         file_name: postData.fileName, 
-        collection: postData.collection,
-        file: postFile,
+        group: postData.group,
+        fileBuffer: postFileBuffer,
+        // fileBuffer: postFileBuffer,
       })
     await newUser.save();
     console.log(`${req.fileN} was saved.`)
