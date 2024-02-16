@@ -29,25 +29,24 @@ router.post("/submission", async (req, res) => {
 
     
   // res.setHeader('Content-Type', 'application/json');
+
+  try {
+    let newUser = new UserRecord({
+        instagram: postData.instagram,
+        discord: postData.discord,
+        file_name: postData.fileName, 
+        collection: postData.collection,
+        file: postFile,
+      })
+    await newUser.save();
+    console.log(`${req.fileN} was saved.`)
+  } 
+  catch (err) {
+    console.log(err);
+  }
+
+
   res.send(`instagram: ${postData.collection} ${postData.fileName}`);
-
-  // try {
-    // let newUser = new UserRecord({
-    //     instagram: postData.instagram,
-    //     discord: postData.discord,
-    //     file_name: postData.fileName, 
-    //     collection: postData.collection,
-    //     file: postFile,
-    //   })
-
-  //   await newUser.save();
-  //   console.log(`${req.fileN} was saved.`)
-  //   res.redirect("/success-page");
-  // } 
-  // catch (err) {
-  //     console.log(err)
-  //     res.redirect("/submission-error");
-  // }
 });
 
 

@@ -7,16 +7,19 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const multer = require('multer');
 const upload = multer();
-// const mongoose = require("mongoose");
 
 
-// mongoose.set("strictQuery", false);
-// const mongoDB = "mongodb://127.0.0.1:27017/librarydb?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.1";
+require('dotenv').config();
+const mongoose = require("mongoose");
 
-// async function main() {
-//   await mongoose.connect(mongoDB);
-// };
-// main().catch((err) => console.log(err));
+
+mongoose.set("strictQuery", false);
+const mongoDB = process.env.MONGO_URI;
+
+async function main() {
+  await mongoose.connect(mongoDB);
+};
+main().catch((err) => console.log(err));
 
 
 

@@ -22,6 +22,15 @@ const userData = new Schema({
         trim: true,
         minLength: 3,
     },
+    collection: {type: String, 
+        required: true,
+        unique: true,
+        trim: true,
+        minLength: 3,
+    },
+    file: { data: Buffer,
+    contentType: String,
+    },
     date: () => Date.now(),
 })
 
