@@ -7,6 +7,18 @@ import '@mantine/core/styles/Button.css';
 
 function Records() {
 
+    function getUsers() {
+
+        fetch("http://localhost:3001/admin/submissions", {
+          }).then(res => res.json())
+          .then(res => JSON.stringify(res)).then(
+            res => setUserRecords(res)
+          )
+
+    }
+
+    const [userRecords, setUserRecords] = useState();
+
     const [toReview, setToReview] = useState(false);
     if (toReview === true) {
       return <Navigate to="/review" />;
@@ -19,7 +31,11 @@ function Records() {
 
         <h1 className="title-style">All Entries</h1>
 
+        {userRecords}
 
+        <Button onClick={() => getUsers()} size='compact-md' variant='light'>
+            getUsers()&nbsp;<IconWheel size={18}/>
+        </Button>
 
 
         <div className="flex flex-col p-4 space-y-4 place-items-center">

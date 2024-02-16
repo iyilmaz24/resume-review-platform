@@ -8,11 +8,12 @@ import '@mantine/core/styles/UnstyledButton.css';
 import '@mantine/core/styles/Button.css';
 
 
-
 function Review() {
+
 
     const [toHome, setToHome] = useState(false);
     const [toRecord, setToRecords] = useState(false);
+
 
     const spinDeg = useRef(Math.ceil(Math.random() * 3000));
 
@@ -23,6 +24,7 @@ function Review() {
       return <Navigate to="/" />;
     };
     
+
 
     return(<>
 

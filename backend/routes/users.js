@@ -3,10 +3,14 @@ const router = express.Router();
 const UserModel = require("../models/userModel");
 
 
-/* GET users listing. */
+
+/* GET testing route. */
 router.get('/', function(req, res, next) {
-  res.send('Hello World');
-  console.log("Hello World");
+  try {
+    res.send("/users Requested.")
+  } catch(error) {
+    console.log(error)
+  }
 });
 
 
@@ -16,9 +20,9 @@ const UserRecord = UserModel;
 router.post("/submission", async (req, res) => {
 
   const postData = req.body;
-  const postFile = req.files[0];
+  // const postFile = req.files[0];
   const postFileBuffer = req.files[0].buffer;
-  console.log(postFileBuffer);
+
     // postFile is a JSON object{
       //   fieldname: 'file',
       //   originalname: 'blob',
@@ -29,9 +33,6 @@ router.post("/submission", async (req, res) => {
       // }
     // console.log(postFile);
 
-    
-  // res.setHeader('Content-Type', 'application/json');
-
   try {
     let newUser = new UserRecord({
         instagram: postData.instagram,
@@ -39,7 +40,6 @@ router.post("/submission", async (req, res) => {
         file_name: postData.fileName, 
         group: postData.group,
         fileBuffer: postFileBuffer,
-        // fileBuffer: postFileBuffer,
       })
     await newUser.save();
     console.log(`${req.fileN} was saved.`)
@@ -48,24 +48,9 @@ router.post("/submission", async (req, res) => {
     console.log(err);
   }
 
-
-  res.send(`instagram: ${postData.collection} ${postData.fileName}`);
+  // res.send(`instagram: ${postData.collection} ${postData.fileName}`)
 });
-
-
-// display all currently uploaded submissions
-router.get("/records", async (req, res) => {
-  try {
-    const items = await UserRecord.find();
-    res.json(items);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
-  }
-  console.log(JSON.stringify(res));
-});
-
-
 
 
 module.exports = router;
+

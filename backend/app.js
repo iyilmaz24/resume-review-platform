@@ -23,7 +23,7 @@ main().catch((err) => console.log(err));
 
 
 
-const indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
 const usersRouter = require('./routes/users');
 
 const app = express();
@@ -46,7 +46,7 @@ app.use(upload.any());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', indexRouter);
+app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

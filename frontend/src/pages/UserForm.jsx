@@ -62,21 +62,11 @@ function UserForm() {
           // accept: 'application.json',
           // 'Content-Type': 'multipart/form-data'
         // },
-        // body: {
-        //   instagram:instagramAt,
-        //   discord:discordAt,
-        //   fileName:fileName,
-        //   collection:reqType,
-        //   file: userFile,
-        // },
         body: formData,
         // cache: 'default'
-      }).then(res => console.log(res.text()))
-      // .then(res => console.log(res.json()))
-        // .then(res => res.json())
-        // .then(res => console.log("res:", res.sentType));
-        // .then(res => console.log((JSON.stringify(res))));
-      
+      })
+      // .then(res => console.log(res.text()))
+
       // if request fails setPageTitle to retry submit and allow re-submission of form
       // setPageTitle("Retry Submission")
       // can also turn setPageTitle text dark red
