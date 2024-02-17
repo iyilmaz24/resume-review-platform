@@ -7,23 +7,27 @@ import '@mantine/core/styles/Button.css';
 
 function Records() {
 
-    function getUsers() {
-
-        fetch("http://localhost:3001/admin/submissions", {
-          }).then(res => res.json())
-          .then(res => JSON.stringify(res)).then(
-            res => setUserRecords(res)
-          )
-
-    }
-
-    const [userRecords, setUserRecords] = useState();
-
+    const [userRecords, setUserRecords] = useState("");
     const [toReview, setToReview] = useState(false);
     if (toReview === true) {
       return <Navigate to="/review" />;
     };
 
+    function getUsers() {
+        fetch("http://localhost:3001/admin/submissions", {
+          }).then(res => res.json()).then(res => setUserRecords(res))
+    }
+
+    function DisplayUsers() {
+        return(<> 
+            <div className="flex flex-col p-4 space-y-4 place-items-center max-w-48">
+                <ul>
+                    {userRecords == "" ? "Request Data Below" : 
+                    userRecords.map(item => (<li key={item._id}>{item.file_name}</li>))}
+                </ul>
+            </div>
+        </>)
+    }
 
     return(<>
 
@@ -31,12 +35,11 @@ function Records() {
 
         <h1 className="title-style">All Entries</h1>
 
-        {userRecords}
+        <DisplayUsers />
 
-        <Button onClick={() => getUsers()} size='compact-md' variant='light'>
-            getUsers()&nbsp;<IconWheel size={18}/>
+        <Button onClick={() => getUsers()} color="rgb(24, 99, 229)" size='compact-md'>
+            Get Entries&nbsp;
         </Button>
-
 
         <div className="flex flex-col p-4 space-y-4 place-items-center">
             <Button onClick={() => setToReview(true)} size='compact-md' variant='light'>

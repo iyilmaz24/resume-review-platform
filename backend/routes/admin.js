@@ -19,7 +19,7 @@ router.get("/submissions", async (req, res) => {
 
   try {
     // res.send("admin/submissions route requested.")
-    const mongoData = await UserModel.find()
+    const mongoData = await UserModel.find();
 
     res.json(mongoData)
 
