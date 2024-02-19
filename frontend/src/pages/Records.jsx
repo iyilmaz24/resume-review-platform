@@ -1,28 +1,24 @@
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import { useState } from 'react';
 import { Button } from '@mantine/core';
 import { IconWheel } from '@tabler/icons-react';
 import '@mantine/core/styles/UnstyledButton.css';
 import '@mantine/core/styles/Button.css';
 
-function Records() {
 
-    const [userRecords, setUserRecords] = useState("");
-    const [toReview, setToReview] = useState(false);
-    if (toReview === true) {
-      return <Navigate to="/review" />;
-    };
+function Records( { navBack, newData, setNewData, userRecords } ) {
 
-    function getUsers() {
-        fetch("http://localhost:3001/admin/submissions", {
-          }).then(res => res.json()).then(res => setUserRecords(res))
-    }
+    // const [toReview, setToReview] = useState(false);
+    // if (toReview === true) {
+    //   return <Navigate to="/review" />;
+    // };
+
 
     function DisplayUsers() {
         return(<> 
             <div className="flex flex-col p-4 space-y-4 place-items-center max-w-48">
                 <ul>
-                    {userRecords == "" ? "Request Data Below" : 
+                    {userRecords == "" ? "Data Loading..." : 
                     userRecords.map(item => (<li key={item._id}>{item.file_name}</li>))}
                 </ul>
             </div>
@@ -37,12 +33,12 @@ function Records() {
 
         <DisplayUsers />
 
-        <Button onClick={() => getUsers()} color="rgb(24, 99, 229)" size='compact-md'>
-            Get Entries&nbsp;
+        <Button onClick={() => {(newData == 0) ? setNewData(1) : setNewData(0)}} color="rgb(24, 99, 229)" size='compact-md'>
+            Refresh Users&nbsp;
         </Button>
 
         <div className="flex flex-col p-4 space-y-4 place-items-center">
-            <Button onClick={() => setToReview(true)} size='compact-md' variant='light'>
+            <Button onClick={() => navBack(false)} size='compact-md' variant='light'>
                 Back to Wheel&nbsp;<IconWheel size={18}/>
             </Button>
         </div>
