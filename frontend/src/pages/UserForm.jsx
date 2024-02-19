@@ -74,7 +74,7 @@ function UserForm() {
 
   return ( <>
     
-    <div className="title-style">{isUploading ? "Resume Submitted!" : "Upload a Resume"}
+    <div className="title-style mt-16">{isUploading ? "Resume Submitted!" : "Upload a Resume"}
         <LoadingOverlay visible={isUploading}
             zIndex={1000}
             overlayProps={{ radius: 'sm', blur: 1 }}
@@ -130,6 +130,16 @@ function UserForm() {
       </div>
 
     </form>
+
+
+    <header className="pageHeader min-h-12 bg-gradient-to-r from-blue-500 to-cyan-500 ">
+      {/* insert links, socials, etc. */}
+    </header>
+
+    <footer className="pageFooter min-h-12 bg-gradient-to-r from-cyan-500 to-blue-500">
+      {/* insert links, socials, etc. */}
+    </footer>
+
 
     </> )
 }

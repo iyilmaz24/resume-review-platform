@@ -48,6 +48,11 @@ function Review() {
 
         console.log(resumeList[choice]);
         setCurrentResume(resumeList[choice]);
+
+        // const choice = Math.floor(Math.random() * userRecords.length);
+
+        // console.log(userRecords[choice]);
+        // setCurrentResume(userRecords[choice]);
     };
     
 
@@ -82,7 +87,13 @@ function Review() {
     </div>
     }
     
+    <header className="pageHeader min-h-6 bg-gradient-to-r from-blue-500 to-cyan-500 ">
+      {/* insert links, socials, etc. */}
+    </header>
 
+    <footer className="pageFooter min-h-6 bg-gradient-to-r from-cyan-500 to-blue-500">
+      {/* insert links, socials, etc. */}
+    </footer>
 
     </>)
 

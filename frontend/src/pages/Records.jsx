@@ -45,6 +45,15 @@ function Records( { navBack, newData, setNewData, userRecords, isLoading, setIsL
 
     </div>
 
+    <header className="pageHeader min-h-6 bg-gradient-to-r from-blue-500 to-cyan-500 ">
+      {/* insert links, socials, etc. */}
+    </header>
+
+    <footer className="pageFooter min-h-6 bg-gradient-to-r from-cyan-500 to-blue-500">
+      {/* insert links, socials, etc. */}
+    </footer>
+
+
     </>)
 
 }

@@ -34,6 +34,15 @@ function Home() {
 
     </div>
 
+
+    <header className="pageHeader min-h-12 bg-gradient-to-r from-blue-500 to-cyan-500 ">
+      {/* insert links, socials, etc. */}
+    </header>
+
+    <footer className="pageFooter min-h-12 bg-gradient-to-r from-cyan-500 to-blue-500">
+      {/* insert links, socials, etc. */}
+    </footer>
+
     </>)
 }
 
