@@ -64,11 +64,11 @@ function Review() {
             <ResumeWheel spinDeg={spinDeg} chooseResume={chooseResume} setShowResume={setShowResume}/>
         </div>
 
-
-        {(showResume == true ? <FileModal setShowResume={setShowResume} /> : null )}
-
-
-
+        {(showResume == true ? 
+        <div className="bg">
+            <FileModal setShowResume={setShowResume} />
+        </div> 
+        : null )}
 
         <div className="flex flex-row p-4 space-x-4 place-items-center">
             <Button onClick={() => setToHome(true)} size='compact-md' variant='light'>
@@ -81,6 +81,9 @@ function Review() {
 
     </div>
     }
+    
+
+
     </>)
 
 }
