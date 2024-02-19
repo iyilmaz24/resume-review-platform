@@ -44,3 +44,9 @@
   color: white;
 }
 
+.modalBody {
+  padding: 1.5rem;
+  background-color: #F7FAFC;
+  border-radius: 1rem;
+  border: none;
+}

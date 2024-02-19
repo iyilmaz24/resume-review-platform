@@ -61,12 +61,12 @@ function Review() {
         <h1 className="title-style">Resume Wheel</h1>
 
         <div>
-            <ResumeWheel spinDeg={spinDeg} chooseResume={chooseResume}/>
+            <ResumeWheel spinDeg={spinDeg} chooseResume={chooseResume} setShowResume={setShowResume}/>
         </div>
 
 
+        {(showResume == true ? <FileModal setShowResume={setShowResume} /> : null )}
 
-        <FileModal />
 
 
 

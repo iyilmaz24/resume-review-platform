@@ -3,7 +3,7 @@ import { IconArrowDownBar } from '@tabler/icons-react';
 
 
 
-function ResumeWheel({ spinDeg, chooseResume }) {
+function ResumeWheel({ spinDeg, chooseResume, setShowResume }) {
 
     function spinWheel () {
         let container = document.querySelector(".container");
@@ -17,7 +17,8 @@ function ResumeWheel({ spinDeg, chooseResume }) {
   return (<>
 
         <div className="arrow flex flex-row place-content-center">
-            <IconArrowDownBar size={60}/></div>
+            <IconArrowDownBar size={60}/>
+        </div>
 
         <div className="container">
             <div className="one">1</div>
@@ -30,9 +31,10 @@ function ResumeWheel({ spinDeg, chooseResume }) {
             <div className="eight">8</div>
         </div>
 
-        <div className='mt-8'>
+        <span className="flex flex-row place-content-center gap-8 mt-8">
+            <button onClick={() => setShowResume(true)} id="spin" className="defaultButton">View</button>
             <button onClick={spinWheel} id="spin" className="defaultButton">Spin</button>
-        </div>
+        </span>
 
 
   </>);
