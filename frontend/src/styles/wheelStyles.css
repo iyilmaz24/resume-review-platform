@@ -12,7 +12,7 @@
     border-color: var(--blue-color);
 	position: relative;
 	overflow: hidden;
-	transition: 5s;
+	transition: 2.5s;
 }
 
 .container div{

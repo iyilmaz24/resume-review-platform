@@ -3,14 +3,15 @@ import { IconArrowDownBar } from '@tabler/icons-react';
 
 
 
-function ResumeWheel({ spinDeg }) {
+function ResumeWheel({ spinDeg, chooseResume }) {
 
     function spinWheel () {
         let container = document.querySelector(".container");
-
         container.style.transform = `rotate(${spinDeg.current}deg)`;
         // console.log(spinDeg.current);
         spinDeg.current += Math.max(Math.ceil(Math.random() * 3000), 1500);
+
+        chooseResume();
     }   
 
   return (<>

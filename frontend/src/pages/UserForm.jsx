@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import uploadFileName from '../scripts/fileUpload';
 import FormInput from '../components/formInput';
-import { Button, Select } from '@mantine/core';
+import { Button, Select, LoadingOverlay } from '@mantine/core';
 import { IconSend2, IconHomeHeart } from '@tabler/icons-react';
 import { Navigate } from "react-router-dom";
 
@@ -20,7 +20,6 @@ function UserForm() {
   const [reqType, setReqType] = useState("");
   const [userFile, setUserFile] = useState();
 
-  const [pageTitle, setPageTitle] = useState("Upload a Resume");
   const [toHome, setToHome] = useState(false);
   if (toHome === true) {
     return <Navigate to="/" />;
@@ -28,6 +27,7 @@ function UserForm() {
 
 
   async function handleSubmit() {
+
       if(discordAt == "" || instagramAt == "") {
         setErrorMsg( (discordAt == "" ? "Discord" : 
         "Instagram") );
@@ -45,7 +45,6 @@ function UserForm() {
       } document.getElementById("fileNameDisplay").style.color = "";
       
       setIsUploading(true);
-      setPageTitle("Resume Submitted!");
 
       const formData = new FormData();
       formData.append("instagram", instagramAt);
@@ -74,8 +73,14 @@ function UserForm() {
   }
 
   return ( <>
-      
-    <div className="title-style">{pageTitle}</div>
+    
+    <div className="title-style">{isUploading ? "Resume Submitted!" : "Upload a Resume"}
+        <LoadingOverlay visible={isUploading}
+            zIndex={1000}
+            overlayProps={{ radius: 'sm', blur: 1 }}
+            loaderProps={{ color: 'blue', type: 'dots' }}
+          />
+    </div>
 
     {/* <input type='file' className='hideItem'></input> */}
     {/* <input type='file'></input>
@@ -83,7 +88,8 @@ function UserForm() {
 
     <form className='min-w-screen min-h-fit 
     flex-row place-items-evenly space-y-4 m-8'>
-      
+
+
         <FormInput defaultText="Discord" eHandler={setDiscordAt} eMsg={errorMsg}/>
         <FormInput defaultText="Instagram" eHandler={setInstagramAt} eMsg={errorMsg}/>
 
@@ -122,6 +128,7 @@ function UserForm() {
             Home&nbsp;<IconHomeHeart size={18}/>
           </Button>
       </div>
+
     </form>
 
     </> )
