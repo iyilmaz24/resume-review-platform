@@ -110,7 +110,7 @@ function UserForm() {
         <input id="file-upload" type="file" className='hideItem'
               onChange={(e) => uploadFileName(e, setFileName, setFileBtnText, setUserFile)}/>
 
-        <h4 id='fileNameDisplay'>{fileName}</h4>
+        <h4 id='fileNameDisplay' className="font-light">{fileName}</h4>
   
 
       <div className="flex flex-col p-4 space-y-20 place-items-center">

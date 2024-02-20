@@ -23,7 +23,7 @@ function Records( { navBack, newData, setNewData, userRecords, isLoading, setIsL
         <h1 className="title-style">All Entries</h1>
 
 
-        <div className="flex flex-col place-items-center" >
+        <div className="flex flex-col place-items-center overflow-y-scroll overflow-x-scroll" >
             {userRecords.length == 0 || isLoading == true ? <Loader color="blue" type="bars" /> : 
             <UserTable userRecords={userRecords} />}
         </div>

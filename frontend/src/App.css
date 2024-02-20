@@ -89,11 +89,18 @@
   border: 0.5px solid #ccc;
   overflow-y: scroll;
   overflow-x: scroll;
-
-  background-color: red;
-  min-width: fit-content;
+  /* min-width: fit-content; */
   max-width: 80vw;
+  /* min-height: fit-content; */
+  max-height: 45vh;
 
-  min-height: fit-content;
-  max-height: 40vh;
+  td {
+    padding: 0.5rem;
+    border: 0.5px solid #ccc;
+  }
+
+  th {
+    color: #FFFFFF;
+  }
+  
 }

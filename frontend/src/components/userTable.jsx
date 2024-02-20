@@ -3,36 +3,31 @@ import { Table } from '@mantine/core';
 
 function UserTable( { userRecords } ) { 
 
-    let rowNum = 0;
-    const rows = userRecords.map((user) => (
-        <Table.Tr key={user._id}>
-          <Table.Td>{++rowNum}</Table.Td>
-          <Table.Td>{user.discord}</Table.Td>
-          <Table.Td>{user.instagram}</Table.Td>
-          <Table.Td>{user.file_name}</Table.Td>
-        </Table.Tr>
-      ));
+      let rowNum = 0;
+      const rows = userRecords.map((user) => (
+          <tr key={user._id}>
+            <td className='font-medium'>{++rowNum}</td>
+            <td className='font-extralight'>{user.discord}</td>
+            <td className='font-extralight'>{user.instagram}</td>
+            <td className='font-extralight'>{user.file_name}</td>
+          </tr>
+        ));
 
 return(<>
 
     {/* implement mantine Skeleton loading overlay */}
 
     <div className='userTable'>
-
-      <Table>
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th>&nbsp;#&nbsp;</Table.Th>
-            <Table.Th>Discord</Table.Th>
-            <Table.Th>Instagram</Table.Th>
-            <Table.Th>File Name</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>{rows}</Table.Tbody>
-      </Table>
-
+        <table>
+            <tr className='bg-gradient-to-r from-cyan-500 to-blue-600'>
+                <th>&nbsp;#&nbsp;</th>
+                <th>Discord</th>
+                <th>Instagram</th>
+                <th>File Name</th>
+            </tr>
+            {rows}
+        </table>
     </div>
-
 
 </>)
 
