@@ -84,3 +84,16 @@
   left: 0;
   right: 0;
 }
+
+.userTable {
+  border: 0.5px solid #ccc;
+  overflow-y: scroll;
+  overflow-x: scroll;
+
+  background-color: red;
+  min-width: fit-content;
+  max-width: 80vw;
+
+  min-height: fit-content;
+  max-height: 40vh;
+}

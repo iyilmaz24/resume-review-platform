@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 
 
-function FileModal( { setShowResume } ) {
+function FileModal( { setShowResume, currentResume } ) {
 
 
 return(<>
@@ -13,7 +13,9 @@ return(<>
             </Button>
         </div>
         <div className='flex place-self-center'>
-            Hello world
+            {currentResume == null ? 
+            (<h1 className="title-style">Spin Wheel First.</h1>)
+            : currentResume }
         </div>
     </div>
 

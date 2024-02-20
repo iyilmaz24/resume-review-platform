@@ -132,11 +132,11 @@ function UserForm() {
     </form>
 
 
-    <header className="pageHeader min-h-12 bg-gradient-to-r from-blue-500 to-cyan-500 ">
+    <header className="pageHeader min-h-12 bg-gradient-to-r from-blue-600 to-cyan-500 ">
       {/* insert links, socials, etc. */}
     </header>
 
-    <footer className="pageFooter min-h-12 bg-gradient-to-r from-cyan-500 to-blue-500">
+    <footer className="pageFooter min-h-12 bg-gradient-to-r from-cyan-600 to-blue-600">
       {/* insert links, socials, etc. */}
     </footer>
 

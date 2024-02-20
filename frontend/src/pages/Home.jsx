@@ -24,7 +24,7 @@ function Home() {
         <div className="place-self-center text-center max-w-72">
             Seamlessly upload your professional credentials, 
             and let our platform do the rest. Our user-friendly interface 
-            ensures a hassle-free experience, no strings attached.
+            provides a hassle-free experience, no strings attached.
         </div>
 
         <div className="flex flex-col p-4 space-y-4 place-items-center">
@@ -35,11 +35,11 @@ function Home() {
     </div>
 
 
-    <header className="pageHeader min-h-12 bg-gradient-to-r from-blue-500 to-cyan-500 ">
+    <header className="pageHeader min-h-12 bg-gradient-to-r from-blue-600 to-cyan-500 ">
       {/* insert links, socials, etc. */}
     </header>
 
-    <footer className="pageFooter min-h-12 bg-gradient-to-r from-cyan-500 to-blue-500">
+    <footer className="pageFooter min-h-12 bg-gradient-to-r from-cyan-600 to-blue-600">
       {/* insert links, socials, etc. */}
     </footer>
 

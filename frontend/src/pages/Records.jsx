@@ -1,7 +1,8 @@
 // import { Navigate } from "react-router-dom";
 // import { useState } from 'react';
-import { Button, Loader } from '@mantine/core';
+import { Button, Loader, Skeleton } from '@mantine/core';
 import { IconWheel } from '@tabler/icons-react';
+import UserTable from '../components/userTable';
 import '@mantine/core/styles/UnstyledButton.css';
 import '@mantine/core/styles/Button.css';
 
@@ -13,16 +14,7 @@ function Records( { navBack, newData, setNewData, userRecords, isLoading, setIsL
     //   return <Navigate to="/review" />;
     // };
 
-    function DisplayUsers() {
-        return(<> 
-            <div className="flex flex-col p-4 space-y-4 place-items-center max-w-48">
-                <ul>
-                    {userRecords == "" || isLoading == true ? <Loader color="blue" type="dots" /> : 
-                    userRecords.map(item => (<li key={item._id}>{item.file_name}</li>))}
-                </ul>
-            </div>
-        </>)
-    }
+
 
     return(<>
 
@@ -30,10 +22,14 @@ function Records( { navBack, newData, setNewData, userRecords, isLoading, setIsL
 
         <h1 className="title-style">All Entries</h1>
 
-        <DisplayUsers />
 
-        <Button onClick={() => {setIsLoading(true);
-            (newData == 0) ? setNewData(1) : setNewData(0)}} color="rgb(24, 99, 229)" size='compact-md'>
+        <div className="flex flex-col place-items-center" >
+            {userRecords.length == 0 || isLoading == true ? <Loader color="blue" type="bars" /> : 
+            <UserTable userRecords={userRecords} />}
+        </div>
+
+        <Button className='max-w-48 place-self-center defaultButton' onClick={() => {setIsLoading(true);
+            (newData == 0) ? setNewData(1) : setNewData(0)}} color="rgb(24, 99, 229)" >
             Refresh Users&nbsp;
         </Button>
 
@@ -44,15 +40,6 @@ function Records( { navBack, newData, setNewData, userRecords, isLoading, setIsL
         </div>
 
     </div>
-
-    <header className="pageHeader min-h-6 bg-gradient-to-r from-blue-500 to-cyan-500 ">
-      {/* insert links, socials, etc. */}
-    </header>
-
-    <footer className="pageFooter min-h-6 bg-gradient-to-r from-cyan-500 to-blue-500">
-      {/* insert links, socials, etc. */}
-    </footer>
-
 
     </>)
 

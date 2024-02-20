@@ -16,8 +16,8 @@ function Review() {
     const [toRecord, setToRecords] = useState(false);
     const [newData, setNewData] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const [userRecords, setUserRecords] = useState("");
-    const [currentResume, setCurrentResume] = useState();
+    const [userRecords, setUserRecords] = useState([]);
+    const [currentResume, setCurrentResume] = useState(null);
     const [showResume, setShowResume] = useState(false);
 
     useEffect(() => {
@@ -43,16 +43,11 @@ function Review() {
     };
 
     function chooseResume() {
-        const resumeList = ["resume1", "resume2", "resume3", "resume4"];
-        const choice = Math.floor(Math.random() * resumeList.length);
 
-        console.log(resumeList[choice]);
-        setCurrentResume(resumeList[choice]);
+        const choice = Math.floor(Math.random() * userRecords.length);
 
-        // const choice = Math.floor(Math.random() * userRecords.length);
-
-        // console.log(userRecords[choice]);
-        // setCurrentResume(userRecords[choice]);
+        console.log(userRecords[choice].file_name);
+        setCurrentResume(userRecords[choice].file_name);
     };
     
 
@@ -71,7 +66,7 @@ function Review() {
 
         {(showResume == true ? 
         <div className="bg">
-            <FileModal setShowResume={setShowResume} />
+            <FileModal setShowResume={setShowResume} currentResume={currentResume} />
         </div> 
         : null )}
 
@@ -87,11 +82,11 @@ function Review() {
     </div>
     }
     
-    <header className="pageHeader min-h-6 bg-gradient-to-r from-blue-500 to-cyan-500 ">
+    <header className="pageHeader min-h-6 bg-gradient-to-r from-blue-600 to-cyan-500 ">
       {/* insert links, socials, etc. */}
     </header>
 
-    <footer className="pageFooter min-h-6 bg-gradient-to-r from-cyan-500 to-blue-500">
+    <footer className="pageFooter min-h-6 bg-gradient-to-r from-cyan-600 to-blue-600">
       {/* insert links, socials, etc. */}
     </footer>
 
