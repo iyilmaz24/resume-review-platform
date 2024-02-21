@@ -18,7 +18,14 @@ function Review() {
     const [isLoading, setIsLoading] = useState(true);
     const [userRecords, setUserRecords] = useState([]);
     const [currentResume, setCurrentResume] = useState(null);
+    const [currentBlob, setCurrentBlob] = useState(null);
     const [showResume, setShowResume] = useState(false);
+
+
+
+    const [demoState, setDemoState] = useState();
+
+
 
     useEffect(() => {
         getUsers();
@@ -33,6 +40,7 @@ function Review() {
         setIsLoading(false);
     }
 
+    // useRef hook to be passed as prop for resumeWheel component
     const spinDeg = useRef(Math.ceil(Math.random() * 3000));
 
     // if (toRecord === true) {
@@ -43,12 +51,38 @@ function Review() {
     };
 
     function chooseResume() {
-
         const choice = Math.floor(Math.random() * userRecords.length);
-
-        console.log(userRecords[choice].file_name);
         setCurrentResume(userRecords[choice].file_name);
-    };
+        // console.log(choice)
+        // console.log(userRecords[choice].file_name)
+
+        const pdf = new Blob([new Uint8Array(userRecords[choice].fileBuffer.data).buffer], { type: 'application/pdf' });
+
+
+        setCurrentBlob(pdf);
+        setDemoState(userRecords[choice]);
+    }
+
+
+    function blobToPdf(pdf, fileName="pdfName") {
+        try {
+            const url = window.URL.createObjectURL(pdf);
+            const link = document.createElement('a');
+            if (link.download !== undefined) { 
+                link.setAttribute('href', url);
+                // link.setAttribute('download', fileName);    
+                link.setAttribute('target', 'resumeFrame');  
+                // link.style.visibility = 'hidden';
+                // document.body.appendChild(link);
+                link.click();
+                // document.body.removeChild(link);
+
+                console.log(link)
+            }
+        } catch (e) {
+            console.error('BlobToSaveAs error', e);
+        }
+    }
     
 
     return(<>
@@ -66,9 +100,14 @@ function Review() {
 
         {(showResume == true ? 
         <div className="bg">
-            <FileModal setShowResume={setShowResume} currentResume={currentResume} />
+            <FileModal setShowResume={setShowResume} currentResume={currentResume} 
+            blobToPdf={blobToPdf} currentBlob={currentBlob} demoState={demoState} />
         </div> 
-        : null )}
+        : 
+        <div className="hidden">
+            <FileModal setShowResume={setShowResume} currentResume={currentResume} 
+            blobToPdf={blobToPdf} currentBlob={currentBlob} demoState={demoState} />
+        </div>  )}
 
         <div className="flex flex-row p-4 space-x-4 place-items-center">
             <Button onClick={() => setToHome(true)} size='compact-md' variant='light'>

@@ -19,13 +19,17 @@ return(<>
 
     <div className='userTable'>
         <table>
-            <tr className='bg-gradient-to-r from-cyan-500 to-blue-600'>
-                <th>&nbsp;#&nbsp;</th>
-                <th>Discord</th>
-                <th>Instagram</th>
-                <th>File Name</th>
-            </tr>
-            {rows}
+            <thead>
+                <tr className='bg-gradient-to-r from-cyan-500 to-blue-600'>
+                    <th>&nbsp;#&nbsp;</th>
+                    <th>Discord</th>
+                    <th>Instagram</th>
+                    <th>File Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {rows}
+            </tbody>
         </table>
     </div>
 
