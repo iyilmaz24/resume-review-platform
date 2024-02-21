@@ -23,10 +23,6 @@ function Review() {
 
 
 
-    const [demoState, setDemoState] = useState();
-
-
-
     useEffect(() => {
         getUsers();
     }, [newData]);
@@ -57,10 +53,8 @@ function Review() {
         // console.log(userRecords[choice].file_name)
 
         const pdf = new Blob([new Uint8Array(userRecords[choice].fileBuffer.data).buffer], { type: 'application/pdf' });
-
-
         setCurrentBlob(pdf);
-        setDemoState(userRecords[choice]);
+
     }
 
 
@@ -71,13 +65,11 @@ function Review() {
             if (link.download !== undefined) { 
                 link.setAttribute('href', url);
                 // link.setAttribute('download', fileName);    
-                link.setAttribute('target', 'resumeFrame');  
+                link.setAttribute('target', '_blank');  
                 // link.style.visibility = 'hidden';
                 // document.body.appendChild(link);
                 link.click();
                 // document.body.removeChild(link);
-
-                console.log(link)
             }
         } catch (e) {
             console.error('BlobToSaveAs error', e);
@@ -101,15 +93,15 @@ function Review() {
         {(showResume == true ? 
         <div className="bg">
             <FileModal setShowResume={setShowResume} currentResume={currentResume} 
-            blobToPdf={blobToPdf} currentBlob={currentBlob} demoState={demoState} />
+            blobToPdf={blobToPdf} currentBlob={currentBlob} />
         </div> 
         : 
         <div className="hidden">
             <FileModal setShowResume={setShowResume} currentResume={currentResume} 
-            blobToPdf={blobToPdf} currentBlob={currentBlob} demoState={demoState} />
+            blobToPdf={blobToPdf} currentBlob={currentBlob} />
         </div>  )}
 
-        <div className="flex flex-row p-4 space-x-4 place-items-center">
+        <div className="flex flex-row p-4 space-x-4 place-content-evenly">
             <Button onClick={() => setToHome(true)} size='compact-md' variant='light'>
                 Home&nbsp;<IconHomeHeart size={18}/>
             </Button>

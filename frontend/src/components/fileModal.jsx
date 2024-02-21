@@ -4,7 +4,6 @@ import { Button } from '@mantine/core';
 function FileModal( { setShowResume, currentResume, blobToPdf, currentBlob } ) {
 
 
-
     return(<>
 
         <div className='flex flex-col modalBody place-items-center'>
@@ -15,13 +14,16 @@ function FileModal( { setShowResume, currentResume, blobToPdf, currentBlob } ) {
             </div>
             <div className='flex flex-row place-items-center min-h-full'>
                 {currentResume == null ? 
-                (<h1 className="title-style">Spin Wheel First.</h1>)
-                : <div className='flex flex-col gap-12'> 
-                    <h1 className="title-style">{currentResume}</h1>
-                    <button className='defaultButton'>Open In New Tab</button>
+                <div className='flex flex-col gap-12'> 
+                    <h1 className="title-style">Spin Wheel First.</h1>
+                    <button onClick={() => {blobToPdf(currentBlob)}} className='max-w-48 place-self-center defaultButton disabledButton' disabled>Open In New Tab</button>
                 </div>
-
-             }
+                : 
+                <div className='flex flex-col gap-12'> 
+                    <h1 className="title-style">{currentResume}</h1>
+                    <button onClick={() => {blobToPdf(currentBlob)}} className='max-w-48 place-self-center defaultButton'>Open In New Tab</button>
+                </div>
+                }
             </div>
 
 
