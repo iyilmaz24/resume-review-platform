@@ -4,10 +4,10 @@ import { useDescope, useSession, useUser } from '@descope/react-sdk'
 import { Descope } from '@descope/react-sdk'
 import { getSessionToken } from '@descope/react-sdk';
 
+
 const Login = () => {
   const { isAuthenticated, isSessionLoading } = useSession()
   const { user, isUserLoading } = useUser()
-
 
 //   const { logout } = useDescope()
 

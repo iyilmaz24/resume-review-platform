@@ -66,9 +66,6 @@ function UserForm() {
       })
       // .then(res => console.log(res.text()))
 
-      // if request fails setPageTitle to retry submit and allow re-submission of form
-      // setPageTitle("Retry Submission")
-      // can also turn setPageTitle text dark red
       setTimeout(() => {setToHome(true)}, 2000)
   }
 
@@ -82,13 +79,8 @@ function UserForm() {
           />
     </div>
 
-    {/* <input type='file' className='hideItem'></input> */}
-    {/* <input type='file'></input>
-    <FileDrop fileRef={fileRef}/> */}
-
     <form className='min-w-screen min-h-fit 
     flex-row place-items-evenly space-y-4 m-8'>
-
 
         <FormInput defaultText="Discord" eHandler={setDiscordAt} eMsg={errorMsg}/>
         <FormInput defaultText="Instagram" eHandler={setInstagramAt} eMsg={errorMsg}/>
@@ -131,7 +123,6 @@ function UserForm() {
 
     </form>
 
-
     <header className="pageHeader min-h-12 bg-gradient-to-r from-blue-600 to-cyan-500 ">
       {/* insert links, socials, etc. */}
     </header>
@@ -140,8 +131,8 @@ function UserForm() {
       {/* insert links, socials, etc. */}
     </footer>
 
-
     </> )
 }
+
 
 export default UserForm;

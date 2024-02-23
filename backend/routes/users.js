@@ -3,8 +3,6 @@ const router = express.Router();
 const UserModel = require("../models/userModel");
 
 
-
-/* GET testing route. */
 router.get('/', function(req, res, next) {
   try {
     res.send("/users Requested.")
@@ -15,8 +13,6 @@ router.get('/', function(req, res, next) {
 
 
 const UserRecord = UserModel;
-
-// make a new submission
 router.post("/submission", async (req, res) => {
 
   const postData = req.body;
@@ -48,7 +44,6 @@ router.post("/submission", async (req, res) => {
     console.log(err);
   }
 
-  // res.send(`instagram: ${postData.collection} ${postData.fileName}`)
 });
 
 

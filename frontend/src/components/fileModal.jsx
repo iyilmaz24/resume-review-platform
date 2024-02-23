@@ -3,7 +3,6 @@ import { Button } from '@mantine/core';
 
 function FileModal( { setShowResume, currentResume, blobToPdf, currentBlob } ) {
 
-
     return(<>
 
         <div className='flex flex-col modalBody place-items-center'>
@@ -25,7 +24,6 @@ function FileModal( { setShowResume, currentResume, blobToPdf, currentBlob } ) {
                 </div>
                 }
             </div>
-
 
             {/* <iframe className='min-h-full min-w-full' name="resumeFrame">
                 {blobToPdf(currentBlob)}

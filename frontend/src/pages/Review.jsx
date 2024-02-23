@@ -20,8 +20,6 @@ function Review() {
     const [currentBlob, setCurrentBlob] = useState(null);
     const [showResume, setShowResume] = useState(false);
 
-
-
     useEffect(() => {
         getUsers();
     }, [newData]);
@@ -38,9 +36,6 @@ function Review() {
     // useRef hook to be passed as prop for resumeWheel component
     const spinDeg = useRef(Math.ceil(Math.random() * 3000));
 
-    // if (toRecord === true) {
-    //   return <Navigate to="/records" />;
-    // };
     if (toHome === true) {
       return <Navigate to="/" />;
     };
@@ -48,14 +43,10 @@ function Review() {
     function chooseResume() {
         const choice = Math.floor(Math.random() * userRecords.length);
         setCurrentResume(userRecords[choice].file_name);
-        // console.log(choice)
-        // console.log(userRecords[choice].file_name)
 
         const pdf = new Blob([new Uint8Array(userRecords[choice].fileBuffer.data).buffer], { type: 'application/pdf' });
         setCurrentBlob(pdf);
-
     }
-
 
     function blobToPdf(pdf, fileName="pdfName") {
         try {
@@ -77,8 +68,6 @@ function Review() {
     
 
     return(<>
-
-           
 
     {toRecord == true ? <Records navBack={setToRecords} newData={newData} setNewData={setNewData} 
     userRecords={userRecords} isLoading={isLoading} setIsLoading={setIsLoading}/> : 
@@ -121,10 +110,6 @@ function Review() {
     <footer className="pageFooter min-h-6 bg-gradient-to-r from-cyan-600 to-blue-600">
       {/* insert links, socials, etc. */}
     </footer>
-
-
-
-
 
     </>)
 

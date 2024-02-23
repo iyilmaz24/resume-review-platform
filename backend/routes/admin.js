@@ -3,7 +3,6 @@ const router = express.Router();
 const UserModel = require("../models/userModel");
 
 
-/* GET testing route. */
 router.get('/', function(req, res, next) {
   try {
     res.send("Admin Page Requested.")
@@ -16,18 +15,13 @@ router.get('/', function(req, res, next) {
 // display all currently uploaded submissions
 router.get("/submissions", async (req, res) => {
 
-
   try {
-    // res.send("admin/submissions route requested.")
     const mongoData = await UserModel.find();
-
     res.json(mongoData)
-
-  } catch(error) {
+  } 
+  catch(error) {
     console.log(error)
   }
-
-
 
 });
 

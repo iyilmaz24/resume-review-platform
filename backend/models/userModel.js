@@ -27,7 +27,6 @@ const userData = new Schema({
     fileBuffer: {
         type: Buffer,
     },
-    date: () => Date.now(),
 })
 
 const UserModel = mongoose.model("user_submissions", userData);

@@ -1,6 +1,4 @@
-// import { Navigate } from "react-router-dom";
-// import { useState } from 'react';
-import { Button, Loader, Skeleton } from '@mantine/core';
+import { Button, Loader } from '@mantine/core';
 import { IconWheel } from '@tabler/icons-react';
 import UserTable from '../components/userTable';
 import '@mantine/core/styles/UnstyledButton.css';
@@ -9,19 +7,11 @@ import '@mantine/core/styles/Button.css';
 
 function Records( { navBack, newData, setNewData, userRecords, isLoading, setIsLoading } ) {
 
-    // const [toReview, setToReview] = useState(false);
-    // if (toReview === true) {
-    //   return <Navigate to="/review" />;
-    // };
-
-
-
     return(<>
 
     <div className="flex flex-col place-content-evenly space-y-4 p-4 min-h-screen min-w-screen">
 
         <h1 className="title-style">All Entries</h1>
-
 
         <div className="flex flex-col place-items-center overflow-y-scroll overflow-x-scroll" >
             {userRecords.length == 0 || isLoading == true ? <Loader color="blue" type="bars" /> : 

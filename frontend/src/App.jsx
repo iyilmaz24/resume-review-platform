@@ -38,16 +38,14 @@ const router = createBrowserRouter([
 
 function App() {
 
-
   return ( <>
     <MantineProvider>
-      
 
       <RouterProvider router={router} />
-
     
     </MantineProvider>
     </> )
+
 }
 
 

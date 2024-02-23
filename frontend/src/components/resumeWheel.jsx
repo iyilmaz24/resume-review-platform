@@ -2,13 +2,11 @@ import '../styles/wheelStyles.css';
 import { IconArrowDownBar } from '@tabler/icons-react';
 
 
-
 function ResumeWheel({ spinDeg, chooseResume, setShowResume }) {
 
     function spinWheel () {
         let container = document.querySelector(".container");
         container.style.transform = `rotate(${spinDeg.current}deg)`;
-        // console.log(spinDeg.current);
         spinDeg.current += Math.max(Math.ceil(Math.random() * 3000), 1500);
 
         chooseResume();
@@ -36,8 +34,8 @@ function ResumeWheel({ spinDeg, chooseResume, setShowResume }) {
             <button onClick={spinWheel} id="spin" className="defaultButton">Spin</button>
         </span>
 
-
   </>);
+
 }
 
 
