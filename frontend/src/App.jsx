@@ -5,6 +5,7 @@ import UserForm from './pages/UserForm';
 import Home from './pages/Home';
 import Review from './pages/Review';
 import Records from './pages/Records';
+import Login from './pages/Login';
 
 import '@mantine/core/styles.css';
 import '@mantine/core/styles/UnstyledButton.css';
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/records",
     element: <Records />
+  },
+  {
+    path: "/login",
+    element: <Login />
   },
 ]);
 

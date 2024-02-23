@@ -8,7 +8,7 @@ function Home() {
     const [toForm, setToForm] = useState(false);
 
     if (toReview === true) {
-      return <Navigate to="/review" />;
+      return <Navigate to="/login" />;
     };
     if (toForm === true) {
       return <Navigate to="/form" />;

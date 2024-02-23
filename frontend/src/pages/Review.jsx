@@ -9,7 +9,6 @@ import '@mantine/core/styles/UnstyledButton.css';
 import '@mantine/core/styles/Button.css';
 
 
-
 function Review() {
 
     const [toHome, setToHome] = useState(false);
@@ -79,6 +78,8 @@ function Review() {
 
     return(<>
 
+           
+
     {toRecord == true ? <Records navBack={setToRecords} newData={newData} setNewData={setNewData} 
     userRecords={userRecords} isLoading={isLoading} setIsLoading={setIsLoading}/> : 
 
@@ -120,6 +121,10 @@ function Review() {
     <footer className="pageFooter min-h-6 bg-gradient-to-r from-cyan-600 to-blue-600">
       {/* insert links, socials, etc. */}
     </footer>
+
+
+
+
 
     </>)
 
